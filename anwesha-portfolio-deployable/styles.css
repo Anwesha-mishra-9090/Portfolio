@@ -240,6 +240,19 @@ footer { padding: 32px 0 48px; text-align: center; color: var(--muted); }
   .case-grid { grid-template-columns: 1fr; }
   .testimonial-grid { grid-template-columns: 1fr; }
 }
+
+/* trust strip */
+.trust-strip { background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,252,255,0.98)); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.trust-inner { display:flex; align-items:center; gap:18px; padding:10px 0; }
+.trust-label { font-weight:700; color:var(--muted); font-size:0.9rem; min-width:90px; }
+.trust-logos { display:flex; gap:12px; align-items:center; }
+.trust-logo { width:84px; height:28px; display:flex; align-items:center; justify-content:center; }
+.trust-cta { margin-left:auto; }
+.case-link { color: inherit; text-decoration:none; display:block; }
+.case-card:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -28px rgba(17,24,39,0.18); }
+/* testimonial controls */
+.testimonial-controls { display:flex; gap:12px; justify-content:center; margin-top:14px; }
+.testimonial-prev, .testimonial-next { padding:8px 12px; border-radius:999px; }
 @media (max-width: 900px) { .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .work-grid { grid-template-columns: 1fr; } }
 .whatsapp-float { position: fixed; right: 18px; bottom: 180px; background: #25d366; color: #fff; padding: 14px 18px; border-radius: 999px; font-weight: 700; box-shadow: 0 20px 60px rgba(37, 211, 102, 0.18); z-index: 160; text-decoration: none; display: inline-flex; align-items: center; gap: 9px; }

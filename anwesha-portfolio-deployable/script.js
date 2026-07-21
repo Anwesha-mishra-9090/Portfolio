@@ -135,10 +135,20 @@ document.addEventListener('DOMContentLoaded', ()=>{
   if(tCards.length > 1){
     let tIndex = 0;
     tCards.forEach((c,i)=> c.classList.toggle('active', i===0));
-    setInterval(()=>{
-      tCards[tIndex].classList.remove('active');
-      tIndex = (tIndex+1) % tCards.length;
-      tCards[tIndex].classList.add('active');
-    }, 4200);
+    let tInterval = null;
+    const showTestimonial = (idx)=>{
+      tCards.forEach((c,i)=> c.classList.toggle('active', i===idx));
+      tIndex = idx;
+    };
+    const nextTestimonial = ()=> showTestimonial((tIndex+1) % tCards.length);
+    const prevTestimonial = ()=> showTestimonial((tIndex-1 + tCards.length) % tCards.length);
+    const startRotation = ()=> { clearInterval(tInterval); tInterval = setInterval(nextTestimonial, 4200); };
+    startRotation();
+
+    // controls
+    const nextBtn = document.querySelector('.testimonial-next');
+    const prevBtn = document.querySelector('.testimonial-prev');
+    nextBtn?.addEventListener('click', ()=>{ nextTestimonial(); startRotation(); });
+    prevBtn?.addEventListener('click', ()=>{ prevTestimonial(); startRotation(); });
   }
 });

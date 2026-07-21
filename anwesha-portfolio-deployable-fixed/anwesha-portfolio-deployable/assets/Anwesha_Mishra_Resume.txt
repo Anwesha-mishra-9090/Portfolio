@@ -1,0 +1,26 @@
+Anwesha Mishra
+QA Engineer | Technical Support Specialist | Freelance Digital Support
+
+Professional Summary
+I help businesses improve reliability, quality, and presentation through QA engineering, technical support, data operations, and polished digital deliverables. I bring a strong mix of testing discipline, operational awareness, and communication to every project.
+
+Core Strengths
+- Manual and API testing with detailed bug reporting and root-cause thinking
+- Technical support and production support experience with SLA awareness
+- Excel-based data management, formatting, reporting, and dashboard support
+- Resume writing, presentation design, PDF formatting, and web development
+- Clear client communication and deadline-focused execution
+
+Experience Highlights
+- QA Engineer at Swosti Tech Solutions handling testing, defect tracking, and support workflows
+- Built and maintained Selenium automation scripts alongside API testing and validation
+- Contributed to incident handling and operational support with strong accuracy and ownership
+
+Tools & Skills
+Postman, Selenium, Jira, Git, GitHub, Python, SQL, PostgreSQL, MySQL, MS Excel, PowerPoint, HTML, CSS, JavaScript
+
+Education
+BCA in Computer Applications — N.C Autonomous College, Jajpur
+
+Availability
+Open to freelance and contract work in QA, technical support, data management, presentations, resume writing, and web development.

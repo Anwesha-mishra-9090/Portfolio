@@ -23,6 +23,28 @@ body {
   background: linear-gradient(180deg, #f7f9fd 0%, #eef2ff 100%);
   line-height: 1.65;
 }
+/* ---------- creative accent: animated gradient ---------- */
+.hero-gradient {
+  background: linear-gradient(90deg, rgba(52,82,225,0.12), rgba(107,124,247,0.06));
+  background-size: 200% 200%;
+  animation: gradientMove 8s linear infinite;
+}
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* pricing and price tag */
+.price-tag{
+  display:inline-block; background:linear-gradient(90deg,#fff,#f6f9ff); border:1px solid rgba(52,82,225,0.08);
+  color:var(--accent); font-weight:800; padding:8px 12px; border-radius:10px; font-size:0.95rem;
+}
+.request-quote{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:10px; background:var(--accent); color:#fff; border:none; cursor:pointer; font-weight:700; }
+.pricing-table{ width:100%; border-collapse:collapse; margin-top:12px; }
+.pricing-table th, .pricing-table td{ text-align:left; padding:12px 10px; border-bottom:1px solid var(--line); }
+.pricing-table th{ background:transparent; font-weight:700; color:var(--text); }
+.pricing-note{ color:var(--muted); font-size:0.95rem; margin-top:8px; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }

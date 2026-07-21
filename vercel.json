@@ -1,7 +1,10 @@
 {
   "version": 2,
   "cleanUrls": true,
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/anwesha-portfolio-deployable/$1" }
+  "builds": [
+    { "src": "anwesha-portfolio-deployable/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/anwesha-portfolio-deployable/$1" }
   ]
 }

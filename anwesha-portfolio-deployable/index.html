@@ -11,6 +11,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#3452E1">
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Anwesha Mishra — QA Engineer & Freelance Digital Support Specialist">
+  <meta property="og:description" content="Freelance QA, data management, resume writing, presentation design, PDF formatting, and web development.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Anwesha Mishra — QA Engineer">
+  <meta name="twitter:description" content="Freelance QA, data management, resume writing, presentation design, PDF formatting, and web development.">
 <style>
   :root{
     --bg:#FFFFFF;
@@ -282,9 +292,22 @@
   .card-grid .reveal:nth-child(4), .work-grid .reveal:nth-child(4){ transition-delay:0.24s; }
   .card-grid .reveal:nth-child(5){ transition-delay:0.32s; }
   .card-grid .reveal:nth-child(6){ transition-delay:0.4s; }
+<!-- Structured data for Person -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Person",
+  "name":"Anwesha Mishra",
+  "url":"https://anwesha-mishra-9090.github.io/Portfolio/",
+  "jobTitle":"QA Engineer",
+  "sameAs":["https://linkedin.com/in/anwesha-mishra-3a0204359","https://github.com/Anwesha-mishra-9090"],
+  "email":"mailto:mishraanwesha.anwesha@gmail.com"
+}
+</script>
 </style>
 </head>
 <body>
+<a class="skip-link" href="#about">Skip to content</a>
 <div id="scroll-progress"></div>
 
 <header>
@@ -774,7 +797,7 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 <script>
   // ---------- subtle light 3D wireframe (soft indigo lines, low opacity) ----------
   (function(){

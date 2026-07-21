@@ -96,3 +96,22 @@ document.querySelectorAll('.work-card').forEach(card=>{
 });
 modalClose?.addEventListener('click', ()=> modal.setAttribute('aria-hidden','true'));
 modal?.addEventListener('click', (e)=>{ if(e.target === modal) modal.setAttribute('aria-hidden','true'); });
+
+// DOM ready tasks
+document.addEventListener('DOMContentLoaded', ()=>{
+  // ensure avatar has alt and lazy-loading for performance
+  const avatar = document.querySelector('.hero-avatar img');
+  if(avatar){ avatar.setAttribute('loading','lazy'); if(!avatar.getAttribute('alt')) avatar.setAttribute('alt','Anwesha Mishra avatar'); }
+
+  // Testimonials auto-rotate
+  const tCards = Array.from(document.querySelectorAll('.testimonial-card'));
+  if(tCards.length > 1){
+    let tIndex = 0;
+    tCards.forEach((c,i)=> c.classList.toggle('active', i===0));
+    setInterval(()=>{
+      tCards[tIndex].classList.remove('active');
+      tIndex = (tIndex+1) % tCards.length;
+      tCards[tIndex].classList.add('active');
+    }, 4200);
+  }
+});

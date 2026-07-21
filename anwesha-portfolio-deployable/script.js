@@ -58,20 +58,36 @@ document.getElementById('contactForm')?.addEventListener('submit', (event) => {
     // silently ignore spam submissions
     return;
   }
-  const name = form.querySelector('input[name="name"]').value.trim();
-  const email = form.querySelector('input[name="email"]').value.trim();
-  const message = form.querySelector('textarea[name="message"]').value.trim();
+  const name = form.querySelector('input[name="name"]')?.value.trim() || '';
+  const email = form.querySelector('input[name="email"]')?.value.trim() || '';
+  const message = form.querySelector('textarea[name="message"]')?.value.trim() || '';
   // basic validation
   if(name.length < 2){ alert('Please enter your name'); return; }
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ alert('Please enter a valid email'); return; }
   if(message.length < 10){ alert('Please provide a few details about your project (at least 10 characters)'); return; }
   const subjectField = form.querySelector('input[name="subject"]')?.value.trim();
   const subject = subjectField || (selectedService ? `Quote request: ${selectedService}` : 'New client inquiry from website');
-  const body = `Hello Anwesha,%0D%0A%0D%0AName: ${encodeURIComponent(name)}%0D%0AEmail: ${encodeURIComponent(email)}%0D%0A%0D%0A${encodeURIComponent(message)}%0D%0A%0D%0AThanks!`;
-  window.location.href = `mailto:mishraanwesha.anwesha@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+  // Build a clean body and encode once
+  const bodyText = `Hello Anwesha,\n\nName: ${name}\nEmail: ${email}\n\n${message}\n\nThanks!`;
+  const mailto = `mailto:mishraanwesha.anwesha@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+
+  // Try to open the mail client reliably by creating and clicking an anchor
+  try {
+    const a = document.createElement('a');
+    a.href = mailto;
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  } catch (err) {
+    // Fallback to location change
+    window.location.href = mailto;
+  }
+
   const status = document.getElementById('formStatus');
   if (status) {
-    status.textContent = 'Your email app should open with a ready message. If not, email me directly at mishraanwesha.anwesha@gmail.com.';
+    status.textContent = 'Your default mail app should open with a ready message. If it does not, please email me at mishraanwesha.anwesha@gmail.com.';
   }
 });
 

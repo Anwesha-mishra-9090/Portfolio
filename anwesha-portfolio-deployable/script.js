@@ -14,26 +14,26 @@ if (navToggle && navLinks) {
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) entry.target.classList.add('in');
-
-  // Copy testimonial request template
-  const copyBtn = document.getElementById('copyTemplateBtn');
-  const statusEl = document.getElementById('templateStatus');
-  if(copyBtn){
-    copyBtn.addEventListener('click', async ()=>{
-      try{
-        const res = await fetch('templates/testimonial-request.txt');
-        const txt = await res.text();
-        await navigator.clipboard.writeText(txt);
-        if(statusEl) statusEl.textContent = 'Template copied to clipboard.';
-        setTimeout(()=>{ if(statusEl) statusEl.textContent = ''; }, 3500);
-      }catch(e){
-        if(statusEl) statusEl.textContent = 'Unable to copy — please download the template.';
-        setTimeout(()=>{ if(statusEl) statusEl.textContent = ''; }, 3500);
-      }
-    });
-  }
   });
 }, { threshold: 0.15 });
+
+// Copy testimonial request template
+const copyBtn = document.getElementById('copyTemplateBtn');
+const statusEl = document.getElementById('templateStatus');
+if (copyBtn) {
+  copyBtn.addEventListener('click', async () => {
+    try {
+      const res = await fetch('templates/testimonial-request.txt');
+      const txt = await res.text();
+      await navigator.clipboard.writeText(txt);
+      if (statusEl) statusEl.textContent = 'Template copied to clipboard.';
+      setTimeout(() => { if (statusEl) statusEl.textContent = ''; }, 3500);
+    } catch (e) {
+      if (statusEl) statusEl.textContent = 'Unable to copy — please download the template.';
+      setTimeout(() => { if (statusEl) statusEl.textContent = ''; }, 3500);
+    }
+  });
+}
 revealItems.forEach(item => observer.observe(item));
 
 const sectionObserver = new IntersectionObserver((entries) => {

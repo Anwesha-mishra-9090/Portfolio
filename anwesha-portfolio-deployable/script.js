@@ -43,6 +43,7 @@ document.querySelectorAll('.request-quote').forEach(btn => {
     if (messageEl) messageEl.value = `Hi Anwesha,\n\nI would like a quote for: ${service}.\nPlease let me know what information you need and the expected turnaround time.\n\nThanks.`;
     const subjectInput = document.querySelector('#contactForm input[name="subject"]');
     if (subjectInput) subjectInput.value = `Quote request: ${service}`;
+    selectedService = service;
   });
 });
 
@@ -51,9 +52,19 @@ let selectedService = null;
 document.getElementById('contactForm')?.addEventListener('submit', (event) => {
   event.preventDefault();
   const form = event.currentTarget;
+  // honeypot check
+  const honeypot = form.querySelector('input[name="website"]')?.value || '';
+  if(honeypot.trim() !== ''){
+    // silently ignore spam submissions
+    return;
+  }
   const name = form.querySelector('input[name="name"]').value.trim();
   const email = form.querySelector('input[name="email"]').value.trim();
   const message = form.querySelector('textarea[name="message"]').value.trim();
+  // basic validation
+  if(name.length < 2){ alert('Please enter your name'); return; }
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ alert('Please enter a valid email'); return; }
+  if(message.length < 10){ alert('Please provide a few details about your project (at least 10 characters)'); return; }
   const subjectField = form.querySelector('input[name="subject"]')?.value.trim();
   const subject = subjectField || (selectedService ? `Quote request: ${selectedService}` : 'New client inquiry from website');
   const body = `Hello Anwesha,%0D%0A%0D%0AName: ${encodeURIComponent(name)}%0D%0AEmail: ${encodeURIComponent(email)}%0D%0A%0D%0A${encodeURIComponent(message)}%0D%0A%0D%0AThanks!`;
@@ -63,3 +74,25 @@ document.getElementById('contactForm')?.addEventListener('submit', (event) => {
     status.textContent = 'Your email app should open with a ready message. If not, email me directly at mishraanwesha.anwesha@gmail.com.';
   }
 });
+
+// Back to top visibility and click
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', ()=>{
+  if(!backToTop) return;
+  if(window.scrollY > 320) backToTop.classList.add('show'); else backToTop.classList.remove('show');
+});
+backToTop?.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+// Modal handlers for work preview (simple): open when .work-card clicked and show its inner HTML
+const modal = document.getElementById('modal');
+const modalContent = modal?.querySelector('.modal-content');
+const modalClose = modal?.querySelector('.modal-close');
+document.querySelectorAll('.work-card').forEach(card=>{
+  card.addEventListener('click',(e)=>{
+    if(!modal || !modalContent) return;
+    modalContent.innerHTML = card.innerHTML;
+    modal.setAttribute('aria-hidden','false');
+  });
+});
+modalClose?.addEventListener('click', ()=> modal.setAttribute('aria-hidden','true'));
+modal?.addEventListener('click', (e)=>{ if(e.target === modal) modal.setAttribute('aria-hidden','true'); });

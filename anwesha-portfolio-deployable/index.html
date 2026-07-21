@@ -737,7 +737,10 @@
         <form class="contact-form" id="contactForm">
           <input type="text" name="name" placeholder="Your name" required />
           <input type="email" name="email" placeholder="Your email" required />
-          <textarea name="message" placeholder="Tell me about your project or what you need help with"></textarea>
+          <input type="hidden" name="subject" value="" />
+          <!-- honeypot to deter bots (leave empty) -->
+          <input type="text" name="website" value="" class="hidden-field" autocomplete="off" tabindex="-1" />
+          <textarea name="message" placeholder="Tell me about your project or what you need help with" required></textarea>
           <button class="btn btn-dark" type="submit">Send inquiry</button>
           <p class="form-status" id="formStatus">This opens your email app with a ready message so you can reach out instantly.</p>
         </form>
@@ -749,6 +752,20 @@
     </div>
   </div>
 </section>
+
+<!-- Sticky hire CTA -->
+<a href="#contact" class="sticky-cta" aria-label="Contact Anwesha">Hire Me</a>
+
+<!-- Back to top -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+
+<!-- Modal container (for work previews) -->
+<div id="modal" class="modal" aria-hidden="true">
+  <div class="modal-inner">
+    <button class="modal-close" aria-label="Close">×</button>
+    <div class="modal-content"></div>
+  </div>
+</div>
 
 <div class="floating-badge"><span class="pulse-dot"></span>Available for work</div>
 

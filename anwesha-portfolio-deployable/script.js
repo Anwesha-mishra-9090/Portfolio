@@ -83,12 +83,23 @@ window.addEventListener('scroll', ()=>{
 });
 backToTop?.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
 
+// FAQ accordion behavior
+document.querySelectorAll('.faq-question').forEach(button => {
+  button.addEventListener('click', () => {
+    const item = button.closest('.faq-item');
+    if (!item) return;
+    item.classList.toggle('active');
+    button.setAttribute('aria-expanded', item.classList.contains('active').toString());
+  });
+});
+
 // Modal handlers for work preview (simple): open when .work-card clicked and show its inner HTML
 const modal = document.getElementById('modal');
 const modalContent = modal?.querySelector('.modal-content');
 const modalClose = modal?.querySelector('.modal-close');
 document.querySelectorAll('.work-card').forEach(card=>{
   card.addEventListener('click',(e)=>{
+    if (e.target.closest('a')) return;
     if(!modal || !modalContent) return;
     modalContent.innerHTML = card.innerHTML;
     modal.setAttribute('aria-hidden','false');

@@ -184,8 +184,8 @@ img { max-width: 100%; display: block; }
 footer { padding: 32px 0 48px; text-align: center; color: var(--muted); }
 .testimonial-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .testimonial-card, .pricing-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow); padding: 24px; }
-.testimonial-card { opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease, transform 0.5s ease; }
-.testimonial-card.active { opacity: 1; transform: none; }
+.testimonial-card { display: none; opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.testimonial-card.active { display: block; opacity: 1; transform: none; }
 .testimonial-card .quote { font-size: 1rem; color: var(--muted); margin: 0 0 14px; line-height: 1.7; }
 .testimonial-card strong { display: block; color: var(--text); }
 .testimonial-card span { color: var(--muted); font-size: .95rem; }
@@ -230,7 +230,7 @@ footer { padding: 32px 0 48px; text-align: center; color: var(--muted); }
 .case-card h3 { margin: 0 0 8px; font-size: 1.05rem; }
 .case-meta { color: var(--muted); margin: 0; line-height: 1.6; }
 
-.testimonial-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; margin-top: 20px; }
+.testimonial-grid { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 20px; max-width: 760px; margin-left: auto; margin-right: auto; }
 .testimonial-card { padding: 20px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); box-shadow: 0 12px 36px -20px rgba(17,24,39,0.06); }
 .testimonial-card .quote { font-style: italic; color: var(--muted); }
 .testimonial-card strong { display:block; margin-top:12px; }
@@ -246,7 +246,7 @@ footer { padding: 32px 0 48px; text-align: center; color: var(--muted); }
 .trust-inner { display:flex; align-items:center; gap:18px; padding:10px 0; }
 .trust-label { font-weight:700; color:var(--muted); font-size:0.9rem; min-width:90px; }
 .trust-logos { display:flex; gap:12px; align-items:center; }
-.trust-logo { width:84px; height:28px; display:flex; align-items:center; justify-content:center; }
+.trust-logo { display:flex; align-items:center; justify-content:center; min-width:120px; padding: 10px 14px; border-radius: 999px; background: var(--surface-soft); border: 1px solid var(--border); color: var(--text); font-weight: 700; font-size: 0.92rem; }
 .trust-cta { margin-left:auto; }
 .case-link { color: inherit; text-decoration:none; display:block; }
 .case-card:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -28px rgba(17,24,39,0.18); }

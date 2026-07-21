@@ -90,22 +90,24 @@ document.getElementById('contactForm')?.addEventListener('submit', (event) => {
   const bodyText = `Hello Anwesha,\n\nName: ${name}\nEmail: ${email}\n\n${message}\n\nThanks!`;
   const mailto = `mailto:mishraanwesha.anwesha@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
 
-  // Try to open the mail client reliably by creating and clicking an anchor
-  try {
-    const a = document.createElement('a');
-    a.href = mailto;
-    a.style.display = 'none';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  } catch (err) {
-    // Fallback to location change
-    window.location.href = mailto;
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=mishraanwesha.anwesha@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+  const gmailWindow = window.open(gmailUrl, '_blank');
+  if (!gmailWindow) {
+    try {
+      const a = document.createElement('a');
+      a.href = mailto;
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch (err) {
+      window.location.href = mailto;
+    }
   }
 
   const status = document.getElementById('formStatus');
   if (status) {
-    status.textContent = 'Your default mail app should open with a ready message. If it does not, please email me at mishraanwesha.anwesha@gmail.com.';
+    status.textContent = 'A Gmail compose window should open with your message. If it does not, please email me at mishraanwesha.anwesha@gmail.com.';
   }
 });
 

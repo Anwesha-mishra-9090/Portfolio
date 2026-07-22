@@ -90,24 +90,14 @@ document.getElementById('contactForm')?.addEventListener('submit', (event) => {
   const bodyText = `Hello Anwesha,\n\nName: ${name}\nEmail: ${email}\n\n${message}\n\nThanks!`;
   const mailto = `mailto:mishraanwesha.anwesha@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
 
-  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=mishraanwesha.anwesha@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
-  const gmailWindow = window.open(gmailUrl, '_blank');
-  if (!gmailWindow) {
-    try {
-      const a = document.createElement('a');
-      a.href = mailto;
-      a.style.display = 'none';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-    } catch (err) {
-      window.location.href = mailto;
-    }
-  }
+  // Use mailto directly - this reliably opens the visitor's own email app
+  // without relying on window.open(), which popup/ad blockers can silently
+  // block while still returning a truthy window object (breaking fallback logic).
+  window.location.href = mailto;
 
   const status = document.getElementById('formStatus');
   if (status) {
-    status.textContent = 'A Gmail compose window should open with your message. If it does not, please email me at mishraanwesha.anwesha@gmail.com.';
+    status.textContent = 'Your email app should open with the message ready to send. If it does not, please email me directly at mishraanwesha.anwesha@gmail.com.';
   }
 });
 
